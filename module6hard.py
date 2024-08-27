@@ -68,7 +68,7 @@ class Cube(Figure):
     def get_volume(self):
         return self.get_sides()[0] ** 3
 
-circle1 = Circle((200, 200, 100), 10)
+circle1 = Circle((200, 200, 100), 10) # (Цвет, стороны)
 cube1 = Cube((222, 35, 130), 6)
 
 # Проверка на изменение цветов:
