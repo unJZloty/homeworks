@@ -1,7 +1,6 @@
 import threading
 import time
 
-tot_en = 100
 lock = threading.Lock()
 
 class Knight(threading.Thread):
@@ -11,7 +10,7 @@ class Knight(threading.Thread):
         self.power = power
 
     def run(self):
-        global tot_en
+        tot_en = 100
         days = 0
 
         print(f"{self.name}, на нас напали!")
