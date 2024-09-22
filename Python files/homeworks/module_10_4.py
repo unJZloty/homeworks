@@ -32,7 +32,6 @@ class Cafe:
                 if table.guest is None:
                     free_table = table
                     break
-
             if free_table:
                 free_table.guest = guest
                 guest.start()
@@ -53,8 +52,7 @@ class Cafe:
                         next_guest = self.queue.get()
                         table.guest = next_guest
                         next_guest.start()
-                        print(
-                            f"{next_guest.name} вышел(-ла) из очереди и сел(-а) за стол номер {table.number}")
+                        print(f"{next_guest.name} вышел(-ла) из очереди и сел(-а) за стол номер {table.number}")
             time.sleep(1)
 
 
