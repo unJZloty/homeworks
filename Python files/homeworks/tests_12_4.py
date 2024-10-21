@@ -1,11 +1,10 @@
 import logging
 
-# Настройка логирования
 logging.basicConfig(
     filename='runner_tests.log',
     level=logging.INFO,
     filemode='w',
-    format='%(asctime)s / %(levelname)s: / %(message)s',  # Формат логов
+    format='%(asctime)s / %(levelname)s: / %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S',
     encoding='utf-8'
 )
@@ -40,36 +39,10 @@ class Runner:
         elif isinstance(other, Runner):
             return self.name == other.name
 
-
-class Tournament:
-    def __init__(self, distance, *participants):
-        self.full_distance = distance
-        self.participants = list(participants)
-
-    def start(self):
-        finishers = {}
-        place = 1
-        while self.participants:
-            for participant in self.participants:
-                participant.run()
-                if participant.distance >= self.full_distance:
-                    finishers[place] = participant
-                    place += 1
-                    self.participants.remove(participant)
-
-        return finishers
-
-# first = Runner('Вося', 10)
-# second = Runner('Илья', 5)
-# third = Runner('Арсен', 10)
-# t = Tournament(101, first, second)
-# print(t.start())
-
 class RunnerTest:
 
     def test_walk(self):
         try:
-            # Создаем объект с отрицательной скоростью
             r1 = Runner('Вася', -5)
             logging.info('"test_walk" выполнен успешно')
         except ValueError as e:
@@ -77,7 +50,6 @@ class RunnerTest:
 
     def test_run(self):
         try:
-            # Создаем объект с некорректным типом для имени
             r2 = Runner(2, 10)
             logging.info('"test_run" выполнен успешно')
         except TypeError as e:
