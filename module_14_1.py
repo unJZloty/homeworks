@@ -2,7 +2,7 @@ import sqlite3
 connection = sqlite3.connect("not_telegram.db")
 cursor = connection.cursor()
 
-cursor.execute("DELETE FROM Users")
+#cursor.execute("DELETE FROM Users")
 
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS Users(
