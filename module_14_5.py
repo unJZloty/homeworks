@@ -10,7 +10,7 @@ import asyncio
 from crud_functions import dbTableIsEmpty, initiate_db_products, get_all_products
 from crud_functions import initiate_db_users, add_user, is_included
 
-api = "7676999659:AAE1MtIJ9edxCEz7qyNSdBqV0-yUDDFhgq0"
+api = "***"
 bot = Bot(token=api)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
