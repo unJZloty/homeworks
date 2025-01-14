@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Path
+from fastapi import FastAPI, Path, HTTPException
 from typing import Annotated
 
 users = {"1": "Имя: Andrew, возраст: 18"}
@@ -19,10 +19,14 @@ async def add_user(username: Annotated[str, Path(min_length=5, max_length=20, de
 @app.put('/user/{user_id}/{username}/{age}')
 async def update_user(user_id: int, username: Annotated[str, Path(min_length=5, max_length=20, description='Enter username', examples='UrbanUser')],
                    age: Annotated[int, Path(ge=18, le=120, description='Enter age', examples=24)]):
+    if str(user_id) not in users:
+        raise HTTPException(status_code=404, detail=f'User with ID {user_id} does not exist')
     users[str(user_id)] = f'Имя: {username}, возраст: {age}'
     return f'User {user_id} has been updated'
 
 @app.delete('/user/{user_id}')
 async def delete_user(user_id: int) -> str:
+    if str(user_id) not in users:
+        raise HTTPException(status_code=404, detail=f'User with ID {user_id} does not exist')
     users.pop(str(user_id))
     return f'User {user_id} has been deleted'
